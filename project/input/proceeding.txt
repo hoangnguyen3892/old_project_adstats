@@ -1,0 +1,161 @@
+C1	<-	as.factor(	MSSubClass	)
+C2	<-	as.factor(	MSZoning	)
+C3	<-	as.factor(	Street	)
+C4	<-	as.factor(	Alley	)
+C5	<-	as.factor(	LotShape	)
+C6	<-	as.factor(	LandContour	)
+C7	<-	as.factor(	Utilities	)
+C8	<-	as.factor(	LotConfig	)
+C9	<-	as.factor(	LandSlope	)
+C10	<-	as.factor(	Neighborhood	)
+C11	<-	as.factor(	Condition1	)
+C12	<-	as.factor(	Condition2	)
+C13	<-	as.factor(	BldgType	)
+C14	<-	as.factor(	HouseStyle	)
+C15	<-	as.factor(	RoofStyle	)
+C16	<-	as.factor(	RoofMatl	)
+C17	<-	as.factor(	Exterior1st	)
+C18	<-	as.factor(	Exterior2nd	)
+C19	<-	as.factor(	MasVnrType	)
+C20	<-	as.factor(	ExterQual	)
+C21	<-	as.factor(	ExterCond	)
+C22	<-	as.factor(	Foundation	)
+C23	<-	as.factor(	BsmtQual	)
+C24	<-	as.factor(	BsmtCond	)
+C25	<-	as.factor(	BsmtExposure	)
+C26	<-	as.factor(	BsmtFinType1	)
+C27	<-	as.factor(	BsmtFinType2	)
+C28	<-	as.factor(	Heating	)
+C29	<-	as.factor(	HeatingQC	)
+C30	<-	as.factor(	CentralAir	)
+C31	<-	as.factor(	Electrical	)
+C32	<-	as.factor(	KitchenQual	)
+C33	<-	as.factor(	Functional	)
+C34	<-	as.factor(	FireplaceQu	)
+C35	<-	as.factor(	GarageType	)
+C36	<-	as.factor(	GarageFinish	)
+C37	<-	as.factor(	GarageQual	)
+C38	<-	as.factor(	GarageCond	)
+C39	<-	as.factor(	PavedDrive	)
+C40	<-	as.factor(	PoolQC	)
+C41	<-	as.factor(	Fence	)
+C42	<-	as.factor(	MiscFeature	)
+C43	<-	as.factor(	SaleType	)
+C44	<-	as.factor(	SaleCondition	)
+
+N1	<-	LotFrontage
+N2	<-	LotArea
+N3	<-	OverallQual
+N4	<-	OverallCond
+N5	<-	YearBuilt
+N6	<-	YearRemodAdd
+N7	<-	MasVnrArea
+N8	<-	BsmtFinSF1
+N9	<-	BsmtFinSF2
+N10	<-	BsmtUnfSF
+N11	<-	TotalBsmtSF
+N12	<-	X1stFlrSF
+N13	<-	X2ndFlrSF
+N14	<-	LowQualFinSF
+N15	<-	GrLivArea
+N16	<-	BsmtFullBath
+N17	<-	BsmtHalfBath
+N18	<-	FullBath
+N19	<-	HalfBath
+N20	<-	BedroomAbvGr
+N21	<-	KitchenAbvGr
+N22	<-	TotRmsAbvGrd
+N23	<-	Fireplaces
+N24	<-	GarageYrBlt
+N25	<-	GarageCars
+N26	<-	GarageArea
+N27	<-	WoodDeckSF
+N28	<-	OpenPorchSF
+N29	<-	EnclosedPorch
+N30	<-	X3SsnPorch
+N31	<-	ScreenPorch
+N32	<-	PoolArea
+N33	<-	MiscVal
+N34	<-	MoSold
+N35	<-	YrSold
+
+cate<-c(C1,	C2,	C3,	C4,	C5,	C6,	C7,	C8,	C9,	C10,	C11,	C12,	C13,	C14,	C15,	C16,	C17,	C18,	C19,	C20,	C21,	C22,	C23,	C24,	C25,	C26,	C27,	C28,	C29,	C30,	C31,	C32,	C33,	C34,	C35,	C36,	C37,	C38,	C39,	C40,	C41,	C42,	C43,	C44,	C45)
+
+fit<-lm(SalePrice~ C1+	C2+	C3+	C4+	C5+	C6+	C7+	C8+	C9+	C10+	C11+	C12+	C13+	C14+	C15+	C16+	C17+	C18+	C19+	C20+	C21+	C22+	C23+	C24+	C25+	C26+	C27+	C28+	C29+	C30+	C31+	C32+	C33+	C34+	C35+	C36+	C37+	C38+	C39+	C40+	C41+	C42+	C43+	C44)
+# 36, 33, 30, 23, 4
+# 43, 42,41, 39,38,37, 31,28, 27,24,22, 21, 19,18,17,15, 13, 9, 7,6, 3
+
+fit2<-lm(SalePrice~ C1+	C2+	C5+	C8+	C10+	C11+	C12+	C14+	C16+C20+	C25+	C26+	C29+	C32+C34+	C35+C40+	C44)
+
+
+# 26 결측값 
+
+fit3<-lm(SalePrice~ C1+C2+C5+C8+C10+C11+C12+C14+C16+C20+C25+C29+C32+C34+C35+C40+C44)
+
+
+# 14 vif
+
+fit4<-lm(SalePrice~ C1+C2+C5+C8+C10+C11+C12+C16+C20+C25+C29+C32+C34+C35+C40+C44)
+
+
+fit5<-lm(SalePrice~ N1+	N2+	N3+	N4+	N5+	N6+	N7+	N8+	N9+	N10+	N11+	N12+	N13+	N14+	N15+	N16+	N17+	N18+	N19+	N20+	N21+	N22+	N23+	N24+	N25+	N26+	N27+	N28+	N29+	N30+	N31+	N32+	N33+	N34+	N35)
+
+# 35, 34, 33, 30, 29 , 28, 26, 24, 23, 19, 18, 17, 15, 14, 11, 10, 9, 6, 1
+# N35, N34 : time data
+# N33, N30, N17, N14: exponential
+# N33 : 결측값
+
+fit6<-lm(SalePrice~ N2+N3+N4+N5+N7+N8+N12+N13+exp(N14)+N16+exp(N17)+N20+N21+N22+N25+N27+exp(N30)+N31+N32)
+
+#N32, exp(N17)
+
+fit7<-lm(SalePrice~ N2+N3+N4+N5+N7+N8+N12+N13+exp(N14)+N16+N20+N21+N22+N25+N27+exp(N30)+N31)
+
+# VIF 안정
+
+#category : 15 / non : 17
+fit4<-lm(SalePrice~ C1+C2+C5+C8+C10+C11+C12+C16+C20+C25+C29+C32+C34+C35+C40+C44)
+fit7<-lm(SalePrice~ N2+N3+N4+N5+N7+N8+N12+N13+exp(N14)+N16+N20+N21+N22+N25+N27+exp(N30)+N31)
+
+# time data
+# N34 : MoSold 	
+# N35 : YrSold, N24 : GarageYrBlt, N5 : YearBuilt, N6 : YearRemodAdd
+
+
+#significant variable
+#C1	MSSubClass
+#C2	MSZoning
+#C5	LotShape
+#C8	LotConfig
+#C10	Neighborhood
+#C11	Condition1
+#C12	Condition2
+#C16	RoofMatl
+#C20	ExterQual
+#C25	BsmtExposure
+#C29	HeatingQC
+#C32	KitchenQual
+#C34	FireplaceQu
+#C35	GarageType
+#C40	PoolQC
+#C44	SaleCondition
+#N2	LotArea
+#N3	OverallQual
+#N4	OverallCond
+#N5	YearBuilt
+#N7	MasVnrArea
+#N8	BsmtFinSF1
+#N12	1stFlrSF
+#N13	2ndFlrSF
+#exp(N14)	LowQualFinSF
+#N16	BsmtFullBath
+#N20	BedroomAbvGr
+#N21	KitchenAbvGr
+#N22	TotRmsAbvGrd
+#N25	GarageCars
+#N27	WoodDeckSF
+#exp(N30)	3SsnPorch
+#N31	ScreenPorch
+
+
+new<-data.frame(C1,	C2,	C5,	C8,	C10,	C11,	C12,	C16,	C20,	C25,	C29,	C32,	C34,	C35,	C40,	C44,	N2,	N3,	N4,	N5,	N7,	N8,	N12,	N13,	N14,	N16,	N20,	N21,	N22,	N25,	N27,	N30,	N31)
